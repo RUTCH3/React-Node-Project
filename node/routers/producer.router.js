@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { producer } from '../controllers/producer.controller'
+import producer from '../controllers/producer.controller.js'
 const router = Router();
 
-router.get('/show/:id', producer);
-router.post('/show/:name', producer);
-router.put('/show/:update', producer);
+router.get('/:id', producer);
+router.post('/:name', producer);
+router.put('/:update', producer);
 
 
 export default router;

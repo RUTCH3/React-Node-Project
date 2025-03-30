@@ -1,9 +1,10 @@
+import { NavLink } from "react-router-dom"
+
 function MainMenu() {
     return (<>
-        <button>מפיקה</button>
-        <a href="">מפיקה</a>
-        <button>משתמשת</button>
-        <a href="">משתמשת</a>
+        <NavLink to='/producer'><button>מפיקה</button></NavLink>
+        <br />
+        <NavLink to='/user'><button>משתמשת</button></NavLink>
     </>)
 }
 
