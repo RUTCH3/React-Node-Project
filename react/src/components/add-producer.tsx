@@ -1,5 +1,9 @@
+import { Grid } from "@mui/material"
+
 function AddProducer() {
-    return (<></>)
+    return (<>
+        <Grid>kjj</Grid>
+    </>)
 }
 
 export default AddProducer

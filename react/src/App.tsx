@@ -6,6 +6,7 @@ import ProducerMenu from './components/producer-menu.tsx';
 import ProducerDetailes from './components/producer-details.tsx';
 import AddProducer from './components/add-producer.tsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import AddEvent from './components/add-event.tsx';
 
 export const router = createBrowserRouter([
   { path: '/', element: <MainMenu /> }
@@ -14,7 +15,7 @@ export const router = createBrowserRouter([
     children: [
       { path: '', element: < EventsUserList /> },
       { path: ':id', element: < EventDetailsForUser /> },
-      { path: 'edit/:new', element: < AddProducer /> },
+      { path: 'edit/:new', element: < AddEvent /> },
       { path: ':update', element: < AddProducer /> },
       { path: ':delete', element: < ProducerDetailes /> }
     ]

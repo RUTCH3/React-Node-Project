@@ -4,9 +4,20 @@ let nextId = 7;
 export default async (req, res) => {
     let status = 500;
     let send = "Error";
-    if (req.method === 'GET' && typeof (req.params.id) != "undefined") {
+    if (req.method === 'GET' && typeof (req.params.id) === "undefined") {
         try {
-            const producer = await Producer.findOne({ id: Number(req.params.id)});
+            const producers = await Producer.find();
+            status = 200;
+            send = producers;
+        } catch (error) {
+            status = 500;
+            send = { error: error.message };
+
+        }
+    }
+    if (req.method === 'GET' && typeof (req.params.id) !== "undefined") {
+        try {
+            const producer = await Producer.findOne({ id: Number(req.params.id) });
             if (!producer) throw new Error("Producer not found.");
             status = 200;
             send = producer;
