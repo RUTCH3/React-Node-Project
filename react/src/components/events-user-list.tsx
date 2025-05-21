@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom"
 import { EventContext } from "../context/event.context";
 
-function EventsUserList() {
+const EventsUserList = () => {
     const { events } = useContext(EventContext);
     const [searchTerm, setSearchTerm] = useState("");
 

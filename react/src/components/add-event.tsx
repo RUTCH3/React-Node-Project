@@ -1,4 +1,4 @@
-function AddEvent() {
+const AddEvent = () => {
     return (<></>);
 }
 

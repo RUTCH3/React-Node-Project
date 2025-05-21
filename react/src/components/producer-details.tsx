@@ -1,20 +1,19 @@
 import { useContext, useState } from "react";
 import { Producer } from "../types/producer";
 import { ProdContext } from "../context/prod.context";
-// import EditIcon from '@mui/icons-material/Edit';
 import { TextField, Button, CircularProgress, Card, CardContent, Typography, Grid } from "@mui/material";
 import { EventContext } from "../context/event.context";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function ProducerDetailes() {
+const ProducerDetailes = () => {
     const { getProdById } = useContext(ProdContext);
     const { events } = useContext(EventContext);
     const [producer1, setProducer] = useState<Producer | null | undefined>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
-    let evs = events;
-    const [eventsProducer, setEventProducer] = useState<Event[] | undefined>(evs);
+    const [eventsProducer, setEventProducer] = useState(events);
+
     const handleSearch = async () => {
         if (!searchTerm.trim()) return alert("יש למלא את שדה החיפוש");
 
@@ -38,26 +37,23 @@ function ProducerDetailes() {
         }
     };
 
+    const addEvent = () => { }
+    const deleteEvent = () => { }
+
+
+    const updateProd = () => { }//לעשות בסוף
+
     return (
         <>
             <Grid container spacing={3} justifyContent="center" alignItems="center" direction="column" sx={{ mt: 3 }}>
-                <Typography variant="h4" gutterBottom>פרטי מפיק</Typography>
+                <Typography variant="h4" gutterBottom>פרטי מפיקה</Typography>
                 <Grid container>
-                    <TextField
-                        id="search_prod"
-                        label="מזהה מפיק"
-                        variant="filled"
-                        type="search"
-                        value={searchTerm}
+                    <TextField id="search_prod" label="אימייל" variant="filled" type="search" required value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <Button variant="contained" color="primary" onClick={handleSearch} sx={{ ml: 2 }}>
                         חפש
                     </Button>
-                    {/* <Fab color="primary" aria-label="edit" sx={{ ml: 2 }}>
-                        <NavLink to={"/"}></NavLink>
-                        <EditIcon />
-                    </Fab> */}
                     {/* להוסיף אופציה של עדכון */}
                 </Grid>
                 {loading && <CircularProgress sx={{ mt: 2 }} />}
@@ -66,15 +62,28 @@ function ProducerDetailes() {
                     <Grid>
                         <Card sx={{ maxWidth: 400, mt: 3 }}>
                             <CardContent>
-                                <Typography variant="h6" gutterBottom>פרטי המפיק</Typography>
+                                <Typography variant="h6" gutterBottom>פרטי המפיקה</Typography>
                                 <Typography><strong>שם:</strong> {producer1.name}</Typography>
                                 <Typography><strong>טלפון:</strong> {producer1.phone}</Typography>
                                 <Typography><strong>אימייל:</strong> {producer1.email}</Typography>
                                 <Typography><strong>תיאור:</strong> {producer1.description}</Typography>
+                                <Button variant="contained" color="primary" onClick={updateProd} sx={{ ml: 2 }}>
+                                    עדכון<NavLink to={'/update'}></NavLink>
+                                </Button>
                             </CardContent>
                         </Card>
                         <Card sx={{ maxWidth: 400, mt: 3 }}>
-                            {/* {eventsProducer?.map(ep => <p>{ep.BUBBLING_PHASE}</p>)} */}
+                            <ul>{eventsProducer?.map((event) => (
+                                <li key={event.id}>
+                                    <NavLink to={`/user/${event.id}`}>{event.name}</NavLink>
+                                    <Button variant="contained" color="primary" onClick={deleteEvent} sx={{ ml: 2 }}>
+                                        מחיקה<NavLink to={'/update'}></NavLink>
+                                    </Button>
+                                </li>))}</ul>
+                            <Button variant="contained" color="primary" onClick={addEvent} sx={{ ml: 2 }}>
+                                הוספה<NavLink to={'/update'}></NavLink>
+                            </Button>
+                            {/* {eventsProducer?.map(ep => <p>{ep.details}</p>) || <p>לא נמצאו אירועים למפיקה</p>} */}
                         </Card>
                     </Grid>
                 ) : (

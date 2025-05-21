@@ -7,7 +7,7 @@ const serverInstance = axios.create({
     baseURL: 'http://localhost:8000',
 })
 
-export function useHttp<T>(url: string, method: HttpMethod = 'get') {
+export const useHttp = <T>(url: string, method: HttpMethod = 'get') => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [data, setData] = useState<T>();

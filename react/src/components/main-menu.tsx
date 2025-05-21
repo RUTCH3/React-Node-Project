@@ -1,10 +1,19 @@
+import { Button } from "@mui/material"
 import { NavLink } from "react-router-dom"
 
-function MainMenu() {
+const MainMenu = () => {
     return (<>
-        <NavLink to='/producer'><button>מפיקה</button></NavLink>
+
+
+
+
+        <NavLink to='/producer'>
+            <Button type="submit" variant="contained" color="primary">מפיקה</Button>
+        </NavLink>
         <br />
-        <NavLink to='/user'><button>משתמשת</button></NavLink>
+        <NavLink to='/user'>
+            <Button type="submit" variant="contained" color="primary">משתמשת</Button>
+        </NavLink>
     </>)
 }
 

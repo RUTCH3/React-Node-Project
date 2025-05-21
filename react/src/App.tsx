@@ -9,30 +9,28 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AddEvent from './components/add-event.tsx';
 
 export const router = createBrowserRouter([
-  { path: '/', element: <MainMenu /> }
-  , {
+  { path: '/', element: <MainMenu /> },
+  {
     path: 'user',
     children: [
-      { path: '', element: < EventsUserList /> },
+      { path: '', element: <EventsUserList /> },
       { path: ':id', element: < EventDetailsForUser /> },
-      { path: 'edit/:new', element: < AddEvent /> },
-      { path: ':update', element: < AddProducer /> },
-      { path: ':delete', element: < ProducerDetailes /> }
+      // { path: ':update', element: < AddProducer /> },
+      // { path: ':delete', element: < ProducerDetailes /> }
     ]
   },
   {
     path: 'producer',
     children: [
       { path: '', element: < ProducerMenu /> },
+      { path: 'edit/:new', element: <AddEvent /> },
       { path: ':id', element: <ProducerDetailes /> },
-      { path: 'edit/:new', element: <AddProducer /> },
-      { path: ':update', element: <AddProducer /> }]
-  },
-
-
+      { path: 'edit', element: <AddProducer /> },
+      { path: 'update', element: <AddProducer /> }]
+  }
 ]);
 
-function App() {
+const App = () => {
   return <RouterProvider router={router} />
 }
 

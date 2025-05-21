@@ -1,4 +1,4 @@
-function EventDetailsForProducer() {
+const EventDetailsForProducer = () => {
     return (<></>)
 }
 
