@@ -1,4 +1,18 @@
-# React-Node-Project
-this project was givven by the teacher for react and node,
-for learning how to bind them both in one app with server and client.
-i'm going to use in context, hooks, redux and ect.
+# Event Management Platform
+
+A full-stack web application for managing events and producers with a user-friendly interface.
+
+## Technologies
+- Frontend: React
+- Backend: Node.js
+- Database: MongoDB
+
+## Features
+- Manage events and producers
+- Responsive and intuitive UI
+- RESTful architecture and modern stack
+
+## Installation
+```bash
+npm install
+npm start
